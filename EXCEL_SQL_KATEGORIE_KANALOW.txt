@@ -1,0 +1,41 @@
+DROP TABLE IF EXISTS [DataStage].[dbo].[kat_tymczasowa]; 
+
+CREATE TABLE [DataStage].[dbo].[kat_tymczasowa] (
+KANA£_TYM VARCHAR(50),
+KATEGORIA_TYM VARCHAR(50));
+
+
+DECLARE KURSOR CURSOR FOR
+SELECT [Kanal]
+      ,[Kategoria]	  
+  FROM [DataStage].[dbo].[kategorie_kanalow]
+  DECLARE @Kanal VARCHAR(50),@Kategoria VARCHAR(50);
+  DECLARE @COUNTER INT = 0;
+  
+	OPEN KURSOR 
+	FETCH NEXT FROM KURSOR INTO @Kanal, @Kategoria
+	
+		WHILE @@FETCH_STATUS = 0 
+		   BEGIN 
+			  IF @Kanal IS NULL
+			  DELETE FROM kategorie_kanalow WHERE CURRENT OF KURSOR
+			  ELSE 
+
+			  INSERT INTO [DataStage].[dbo].[kat_tymczasowa] (KANA£_TYM, KATEGORIA_TYM)
+				VALUES (@Kanal, @Kategoria);
+			  FETCH NEXT FROM KURSOR INTO @Kanal, @Kategoria 
+			  
+	    END 
+CLOSE KURSOR 
+DEALLOCATE KURSOR
+
+  DROP TABLE IF EXISTS [DataStage].[dbo].[kategorie_kanalow]; 
+
+CREATE TABLE [DataStage].[dbo].[kategorie_kanalow] (
+Kanal VARCHAR(50),
+Kategoria VARCHAR(50));
+
+INSERT INTO [DataStage].[dbo].[kategorie_kanalow]
+SELECT * FROM [DataStage].[dbo].[kat_tymczasowa]
+
+DROP TABLE IF EXISTS [DataStage].[dbo].[kat_tymczasowa];
