@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2011
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "HurtownieDanychprojekt", "HurtownieDanychprojekt\HurtownieDanychprojekt.dtproj", "{14A416C7-6E4A-4475-8F6C-C9C217E70A8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14A416C7-6E4A-4475-8F6C-C9C217E70A8E}.Development|Default.ActiveCfg = Development
+		{14A416C7-6E4A-4475-8F6C-C9C217E70A8E}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD3467D7-AAF2-4B78-A760-EEBBD7E8BC3E}
+	EndGlobalSection
+EndGlobal
